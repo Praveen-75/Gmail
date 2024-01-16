@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <link rel="stylesheet" href="/stylesheets/style.css">
+     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+     <div id="main">
+          <div id="container">
+               <a href="/logout">Logout Now</a>
+          </div>
+          <div class="container1">
+               <a id="sent" href="/profile">Back to in box</a>
+               <h3><%= mail.userid.username %></h3>
+               <p><%= mail.mailtext %></p>
+                    <div id="sen">
+                         <a id="sent1" href="/delete/mail/<%= mail._id %>">delete</a>
+                    </div>
+          </div>
+     </div>
+
+</body>
+</html>
+
+      

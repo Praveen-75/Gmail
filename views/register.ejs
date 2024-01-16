@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+     <div id="main">
+          <div id="mid1">
+               <h1>Register User</h1>
+               <form action="/register" method="post">
+                    <div id="input1">
+                         <input type="text" name="name" placeholder="name">
+                         <input id="username" type="text" name="username" placeholder="username">
+                         <input type="password" name="password" placeholder="password">
+                         <input type="email" name="email" placeholder="email">
+                         <input type="text" name="mobile" placeholder="mobile no">
+                    </div>
+                    <div id="radio">
+                         <input value="male" type="radio" name="gender">male
+                         <input value="female" type="radio" name="gender">female
+                         <input value="other" type="radio" name="gender">other
+                    </div>
+                    <div id="btn">
+                         <a href="/">already have a account</a>
+                         <button>Login</button>
+                    </div>
+               </form>
+          </div>
+     </div>
+
+
+
+     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/json2/20160511/json2.min.js" integrity="sha512-uWk2ZXl3GVrq6DZsrL5dSg1S/F3MNQ9VaDFigqXOoKUnWG58UxOuJGfTrzh5KjpoBvPiFniL2PahU2HUTFMJXw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     <script>
+          document.querySelector("#username")
+          .addEventListener("input",function(){
+               const that = this;
+               if(this.value.trim().length > 0){
+                    axios.get(`/check/${this.value}`)
+                    .then(function(response){
+                    if(response.data.user){
+                         that.style.border = ".2vw solid red"
+                    }else{
+                         that.style.border = "solid .1vw black"
+                    }
+               })
+               }else{
+                    that.style.border = "solid .1vw black"
+               }
+          })
+     </script>
+</body>
+</html>

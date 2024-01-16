@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <link rel="stylesheet" href="/stylesheets/style.css">
+     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+     <div id="main">
+          <div id="nav">
+               <div id="photo">
+                    <img src="/images/uploads/<%= user.profilePic %>" alt="">
+               </div>
+               <h1>Hey, <%= user.username %></h1>
+          </div>
+          <div id="container">
+               <button id="createbtn">+ Create New Mail</button>
+               <a href="/logout">Logout Now</a>
+          </div>
+          <div class="container">
+               <a id="sent" href="/profile">check in box</a>
+               <% user.sentMails.reverse().forEach(function(mail){ %>
+                    <div id="mails">
+                         <h2><%= mail.receiver %></h2>
+                         <p><%= mail.mailtext.length > 20 ? mail.mailtext.substring(0,20)+'...' : mail.mailtext  %></p>
+
+                         <div id="sen">
+                              <a id="sent1" href="/read/mail/<%= mail._id %>">read more</a>
+                              <a id="sent1" href="/delete/mail/<%= mail._id %>">delete</a>
+                         </div>
+                    </div>
+              <% }) %>
+
+
+              
+
+               <div id="sender">
+                    <div id="cls">
+                         <h3>Send to...</h3>
+                         <div id="close"><i class="ri-close-line"></i></div>
+                    </div>
+                    <form action="/compose" method="post" autocomplete="off">
+                         <input type="email" name="receiveremail" placeholder="email">
+                         <textarea name="mailtext" placeholder="Type here..."></textarea>
+                         <button>Send</button>
+                    </form>
+               </div>
+          </div>
+     </div>
+
+
+     <script src="/javascripts/Gmail.js"></script>
+</body>
+</html>
+
+      
